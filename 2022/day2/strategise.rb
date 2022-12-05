@@ -1,6 +1,10 @@
 SCORES = { "X" => 1, "Y" => 2, "Z" => 3 }
-WINS = [["A", "Y"], ["B", "Z"], ["C", "X"]]
-DRAWS = [["A", "X"], ["B", "Y"], ["C", "Z"]]
+
+OPP = ["A", "B", "C"]
+MINE = ["X", "Y", "Z"]
+
+DRAWS = OPP.zip(MINE)
+WINS = OPP.zip(MINE.rotate)
 
 lines = ARGF.readlines.map(&:chomp).map(&:split)
 
