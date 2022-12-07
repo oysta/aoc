@@ -1,6 +1,5 @@
 SCORES = { "X" => 1, "Y" => 2, "Z" => 3 }
 
-
 ACTIONS = %w[A B C]
 MINE = %w[X Y Z]
 
@@ -28,6 +27,6 @@ PLAYS = { "X" => LOSE_PLAYS, "Y" => DRAW_PLAYS, "Z" => WIN_PLAYS }
 PLAY_SCORES = { "A" => 1, "B" => 2, "C" => 3 }
 result_points = lines.map { _1[1] }.map(&RESULT_SCORES).sum
 
-play_points = lines.map { |r| PLAYS[r[1]][r[0]] }.map(&PLAY_SCORES).sum
+play_points = lines.map { |opp, strat| PLAYS[strat][opp] }.map(&PLAY_SCORES).sum
 
 puts result_points + play_points
