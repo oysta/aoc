@@ -10,3 +10,10 @@ puts lines
   .map(&:first)
   .map(&PRIORITIES) 
   .sum
+
+# Part 2
+puts lines
+  .each_slice(3)
+  .flat_map { _1.map(&:chars).reduce(&:"&") }
+  .map(&PRIORITIES)
+  .sum
