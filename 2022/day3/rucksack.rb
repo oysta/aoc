@@ -6,8 +6,7 @@ PRIORITIES = Hash[
 
 puts lines
   .map { _1.chars.each_slice(_1.size / 2).to_a }
-  .map { _1.to_a & _2.to_a }
-  .map(&:first)
+  .flat_map { _1.to_a & _2.to_a }
   .map(&PRIORITIES) 
   .sum
 
