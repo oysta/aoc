@@ -10,7 +10,6 @@ records = input.map {
 puts records.map { |time, distance| 
   time
     .times
-    .map { |t| [t, time - t] }
-    .map { |speed, remaining| speed * remaining }
+    .map { |speed| speed * (time-speed) }
     .count { _1 >= distance }
 }.reduce(1, &:*)
