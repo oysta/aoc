@@ -1,6 +1,6 @@
 input = ARGF.readlines.map(&:chomp)
 
-CARD_STRENGTH = Hash[%w[2 3 4 5 6 7 8 9 T J Q K A].each_with_index.to_a]
+CARD_STRENGTH = Hash[%w[2 3 4 5 6 7 8 9 T J Q K A].each.with_index.to_a]
 
 ranked = input
   .map(&:split)
@@ -14,9 +14,9 @@ ranked = input
     elsif counts1 != counts2
       counts2.last <=> counts1.last
     else
-      diff = b[0].zip(a[0]).find { _1[0] != _1[1] }
+      diff = b[0].zip(a[0]).find { _1 != _2 }
       CARD_STRENGTH[diff[1]] <=> CARD_STRENGTH[diff[0]]
     end
   }
 
-puts ranked.each_with_index.map {|hand, idx| (idx+1) * hand[2] }.sum
+puts ranked.map.with_index {|hand, idx| (idx+1) * hand[2] }.sum
