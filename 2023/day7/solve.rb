@@ -14,8 +14,8 @@ puts input
   .map { |chars, tallies, bid| [chars, [5-tallies.count,tallies.max], bid] }
   .sort_by { |_, kind| kind }
   .group_by { |_, kind| kind }
-  .transform_values { |same_kinded| same_kinded.sort(&STRENGTH_COMP) }
   .values
+  .map { |same_kinded| same_kinded.sort(&STRENGTH_COMP) }
   .flatten(1)
   .map
   .with_index { |(_,_,bid), idx| (idx+1) * bid }
