@@ -21,7 +21,6 @@ puts directions
   .lazy
   .cycle
   .take_while { |direction| 
-    now_at = ROUTES[now_at][direction]
-    now_at != 'ZZZ' 
+    (now_at = ROUTES[now_at][direction]) != 'ZZZ'
   }
   .count + 1
