@@ -6,13 +6,12 @@ input.shift
 
 ROUTE_RE = /([A-Z]{3}) = \(([A-Z]{3}), ([A-Z]{3})\)/
 
-ROUTES = Hash[
+ROUTES = 
   input
     .map(&ROUTE_RE.method(:match))
     .map(&:captures)
     .map { |key, left, right| [key, {"L" => left, "R" => right}] }
-    .to_a
-]
+    .to_h
 
 now_at = 'AAA'
 
