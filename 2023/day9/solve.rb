@@ -4,7 +4,7 @@ def diffs(enum)
   Enumerator.new do |yielder|
     loop do
       yielder.yield enum
-      enum = enum.each_cons(2).map{ |a,b| b-a }
+      enum = enum.each_cons(2).map { |a,b| b-a } 
       break unless enum.any?(&:nonzero?)
     end
     yielder.yield enum
@@ -22,6 +22,5 @@ p input
       .last
       .last
   }
-}
-.sum
+  .sum
 
